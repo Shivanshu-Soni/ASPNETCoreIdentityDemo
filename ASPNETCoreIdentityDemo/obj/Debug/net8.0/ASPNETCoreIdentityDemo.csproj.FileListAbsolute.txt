@@ -137,3 +137,4 @@ C:\Shivanshu\ASPNETCoreIdentityDemo\ASPNETCoreIdentityDemo\obj\Debug\net8.0\refi
 C:\Shivanshu\ASPNETCoreIdentityDemo\ASPNETCoreIdentityDemo\obj\Debug\net8.0\ASPNETCoreIdentityDemo.pdb
 C:\Shivanshu\ASPNETCoreIdentityDemo\ASPNETCoreIdentityDemo\obj\Debug\net8.0\ASPNETCoreIdentityDemo.genruntimeconfig.cache
 C:\Shivanshu\ASPNETCoreIdentityDemo\ASPNETCoreIdentityDemo\obj\Debug\net8.0\ref\ASPNETCoreIdentityDemo.dll
+c:\Shivanshu\ASPNETCoreIdentityDemo\ASPNETCoreIdentityDemo\obj\Debug\net8.0\ASPNETCoreIdentityDemo.sourcelink.json

@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using ASPNETCoreIdentityDemo.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ASPNETCoreIdentityDemo.Controllers;
 
@@ -12,12 +13,12 @@ public class HomeController : Controller
     {
         _logger = logger;
     }
-
+    [AllowAnonymous]
     public IActionResult Index()
     {
         return View();
     }
-
+    [Authorize]
     public IActionResult Privacy()
     {
         return View();
@@ -27,5 +28,15 @@ public class HomeController : Controller
     public IActionResult Error()
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
+    [AllowAnonymous]
+    public IActionResult NonSecureMethod()
+    {
+        return View();
+    }
+    [Authorize]
+    public IActionResult SecureMethod()
+    {
+        return View();
     }
 }

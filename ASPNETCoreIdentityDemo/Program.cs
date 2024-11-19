@@ -1,6 +1,7 @@
 using ASPNETCoreIdentityDemo.Models.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +11,21 @@ var connectionString = builder.Configuration.GetConnectionString("SQLServerIdent
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
                     options.UseSqlServer(connectionString));
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(
+    options => {
+        options.Password.RequireNonAlphanumeric=true;
+        options.Password.RequiredLength = 8;
+        options.Password.RequireDigit=true;
+        options.Password.RequireLowercase=true;
+        options.Password.RequireUppercase=true;
+        options.Password.RequiredUniqueChars = 4;
+    
+        //other settings
+    
+    }
+    
+
+).AddEntityFrameworkStores<ApplicationDbContext>();
 
 var app = builder.Build();
 

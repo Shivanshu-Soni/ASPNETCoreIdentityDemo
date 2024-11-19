@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ASPNETCoreIdentityDemo.Controllers
 {
-    [Route("[controller]")]
+    [Route("account")]
     public class AccountController : Controller
     {
         public UserManager<IdentityUser> UserManager { get; }
@@ -25,12 +25,14 @@ namespace ASPNETCoreIdentityDemo.Controllers
 
 
         [HttpGet]
+        [Route("register")]
         public IActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
+        [Route("register")]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
@@ -59,12 +61,15 @@ namespace ASPNETCoreIdentityDemo.Controllers
         }
 
         [HttpGet]
-        public IActionResult Login()
+        [Route("login")]
+        public IActionResult Login(string? ReturnUrl = null)
         {
+            ViewData["ReturnUrl"] = ReturnUrl;
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        [Route("login")]
+        public async Task<IActionResult> Login(LoginViewModel model, string? ReturnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -72,7 +77,16 @@ namespace ASPNETCoreIdentityDemo.Controllers
                      : false);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction(nameof(HomeController.Index), "Home");
+                    // Check if the ReturnUrl is not null and is a local URL
+                    if (!string.IsNullOrEmpty(ReturnUrl) && Url.IsLocalUrl(ReturnUrl))
+                    {
+                        return Redirect(ReturnUrl);
+                    }
+                    else
+                    {
+                        // Redirect to default page
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
                 if (result.RequiresTwoFactor)
                 {
@@ -93,12 +107,24 @@ namespace ASPNETCoreIdentityDemo.Controllers
         }
 
         [HttpPost]
+        [Route("/logout")]
         public async Task<IActionResult> Logout()
         {
             await SignInManager.SignOutAsync();
-            return RedirectToAction("index", "home");
+            return RedirectToAction("Index", "Home");
         }
 
+        public async Task<IActionResult> IsEmailAvailable(string Email)
+        {
+
+            var user = await UserManager.FindByEmailAsync(Email);
+            if(user == null){
+                return Json(true);
+            }
+            else{
+                return Json($"Email {Email} is already in use");
+            }
+        }
 
     }
 }
