@@ -1,3 +1,4 @@
+using ASPNETCoreIdentityDemo.Models;
 using ASPNETCoreIdentityDemo.Models.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +12,7 @@ var connectionString = builder.Configuration.GetConnectionString("SQLServerIdent
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
                     options.UseSqlServer(connectionString));
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>(
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(
     options => {
         options.Password.RequireNonAlphanumeric=true;
         options.Password.RequiredLength = 8;

@@ -1,82 +1,90 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+using ASPNETCoreIdentityDemo.Controllers;
 using ASPNETCoreIdentityDemo.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using System.Security.Policy;
 
 namespace ASPNETCoreIdentityDemo.Controllers
 {
-    [Route("account")]
     public class AccountController : Controller
     {
-        public UserManager<IdentityUser> UserManager { get; }
-        public SignInManager<IdentityUser> SignInManager { get; }
+        //userManager will hold the UserManager instance
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        //signInManager will hold the SignInManager instance
+        private readonly SignInManager<ApplicationUser> signInManager;
+
+        //Both UserManager and SignInManager services are injected into the AccountController
+        //using constructor injection
+        public AccountController(UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager)
         {
-            UserManager = userManager;
-            SignInManager = signInManager;
+            this.userManager = userManager;
+            this.signInManager = signInManager;
         }
 
-
-
         [HttpGet]
-        [Route("register")]
         public IActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
-        [Route("register")]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser
+                // Copy data from RegisterViewModel to ApplicationUser
+                var user = new ApplicationUser
                 {
                     UserName = model.Email,
                     Email = model.Email,
-
-
+                    FirstName = model.FirstName,
+                    LastName = model.LastName
                 };
-                // create user 
-                var result = await UserManager.CreateAsync(user, model.Password);
-                //if user is created immidiatl
+
+                // Store user data in AspNetUsers database table
+                var result = await userManager.CreateAsync(user, model.Password);
+
+                // If user is successfully created, sign-in the user using
+                // SignInManager and redirect to index action of HomeController
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
+                    await signInManager.SignInAsync(user, isPersistent: false);
+                    return RedirectToAction("index", "home");
                 }
+
+                // If there are any errors, add them to the ModelState object
+                // which will be displayed by the validation summary tag helper
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
+
             return View(model);
         }
 
         [HttpGet]
-        [Route("login")]
         public IActionResult Login(string? ReturnUrl = null)
         {
             ViewData["ReturnUrl"] = ReturnUrl;
             return View();
         }
+
         [HttpPost]
-        [Route("login")]
-        public async Task<IActionResult> Login(LoginViewModel model, string? ReturnUrl)
+        [AllowAnonymous]
+        public async Task<IActionResult> Login(LoginViewModel model, string ReturnUrl)
         {
             if (ModelState.IsValid)
             {
-                var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure
-                     : false);
+                var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+
                 if (result.Succeeded)
                 {
+                    // Handle successful login
+
                     // Check if the ReturnUrl is not null and is a local URL
                     if (!string.IsNullOrEmpty(ReturnUrl) && Url.IsLocalUrl(ReturnUrl))
                     {
@@ -103,28 +111,34 @@ namespace ASPNETCoreIdentityDemo.Controllers
                     return View(model);
                 }
             }
+
+            // If we got this far, something failed, redisplay form
             return View(model);
         }
 
         [HttpPost]
-        [Route("/logout")]
         public async Task<IActionResult> Logout()
         {
-            await SignInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            await signInManager.SignOutAsync();
+            return RedirectToAction("index", "home");
         }
 
+        [AllowAnonymous]
+        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> IsEmailAvailable(string Email)
         {
+            //Check If the Email Id is Already in the Database
+            var user = await userManager.FindByEmailAsync(Email);
 
-            var user = await UserManager.FindByEmailAsync(Email);
-            if(user == null){
+            if (user == null)
+            {
                 return Json(true);
             }
-            else{
-                return Json($"Email {Email} is already in use");
+            else
+            {
+                return Json($"Email {Email} is already in use.");
             }
         }
-
     }
 }

@@ -9,9 +9,14 @@ namespace ASPNETCoreIdentityDemo.Models
 {
     public class RegisterViewModel
     {
+        [Required(ErrorMessage = "First Name is Required")]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+        [Display(Name = "Last Name")]
+        public string? LastName { get; set; }
         [Required]
         [EmailAddress]
-        [Remote(action:"IsEmailAvailable", controller: "Account")]
+        [Remote(action: "IsEmailAvailable", controller: "Account")]
         public string Email { get; set; }
         [Required]
         [DataType(DataType.Password)]
