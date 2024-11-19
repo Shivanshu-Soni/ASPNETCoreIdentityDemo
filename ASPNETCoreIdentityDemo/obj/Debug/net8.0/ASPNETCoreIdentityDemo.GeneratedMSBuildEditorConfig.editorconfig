@@ -9,55 +9,59 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ASPNETCoreIdentityDemo
 build_property.RootNamespace = ASPNETCoreIdentityDemo
-build_property.ProjectDir = C:\Shivanshu\ASPNETCoreIdentityDemo\ASPNETCoreIdentityDemo\
+build_property.ProjectDir = c:\Shivanshu\ASPNETCoreIdentityDemo\ASPNETCoreIdentityDemo\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Shivanshu\ASPNETCoreIdentityDemo\ASPNETCoreIdentityDemo
+build_property.MSBuildProjectDirectory = c:\Shivanshu\ASPNETCoreIdentityDemo\ASPNETCoreIdentityDemo
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Shivanshu/ASPNETCoreIdentityDemo/ASPNETCoreIdentityDemo/Views/Account/Login.cshtml]
+[c:/Shivanshu/ASPNETCoreIdentityDemo/ASPNETCoreIdentityDemo/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Shivanshu/ASPNETCoreIdentityDemo/ASPNETCoreIdentityDemo/Views/Account/Register.cshtml]
+[c:/Shivanshu/ASPNETCoreIdentityDemo/ASPNETCoreIdentityDemo/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Shivanshu/ASPNETCoreIdentityDemo/ASPNETCoreIdentityDemo/Views/Home/Index.cshtml]
+[c:/Shivanshu/ASPNETCoreIdentityDemo/ASPNETCoreIdentityDemo/Views/Administration/CreateRole.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRpb25cQ3JlYXRlUm9sZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Shivanshu/ASPNETCoreIdentityDemo/ASPNETCoreIdentityDemo/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Shivanshu/ASPNETCoreIdentityDemo/ASPNETCoreIdentityDemo/Views/Home/NonSecureMethod.cshtml]
+[c:/Shivanshu/ASPNETCoreIdentityDemo/ASPNETCoreIdentityDemo/Views/Home/NonSecureMethod.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxOb25TZWN1cmVNZXRob2QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Shivanshu/ASPNETCoreIdentityDemo/ASPNETCoreIdentityDemo/Views/Home/Privacy.cshtml]
+[c:/Shivanshu/ASPNETCoreIdentityDemo/ASPNETCoreIdentityDemo/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Shivanshu/ASPNETCoreIdentityDemo/ASPNETCoreIdentityDemo/Views/Home/SecureMethod.cshtml]
+[c:/Shivanshu/ASPNETCoreIdentityDemo/ASPNETCoreIdentityDemo/Views/Home/SecureMethod.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZWN1cmVNZXRob2QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Shivanshu/ASPNETCoreIdentityDemo/ASPNETCoreIdentityDemo/Views/Shared/Error.cshtml]
+[c:/Shivanshu/ASPNETCoreIdentityDemo/ASPNETCoreIdentityDemo/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Shivanshu/ASPNETCoreIdentityDemo/ASPNETCoreIdentityDemo/Views/Shared/_ValidationScriptsPartial.cshtml]
+[c:/Shivanshu/ASPNETCoreIdentityDemo/ASPNETCoreIdentityDemo/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Shivanshu/ASPNETCoreIdentityDemo/ASPNETCoreIdentityDemo/Views/_ViewImports.cshtml]
+[c:/Shivanshu/ASPNETCoreIdentityDemo/ASPNETCoreIdentityDemo/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Shivanshu/ASPNETCoreIdentityDemo/ASPNETCoreIdentityDemo/Views/_ViewStart.cshtml]
+[c:/Shivanshu/ASPNETCoreIdentityDemo/ASPNETCoreIdentityDemo/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Shivanshu/ASPNETCoreIdentityDemo/ASPNETCoreIdentityDemo/Views/Shared/_Layout.cshtml]
+[c:/Shivanshu/ASPNETCoreIdentityDemo/ASPNETCoreIdentityDemo/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-l1t0zliw5t
